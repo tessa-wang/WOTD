@@ -1,6 +1,6 @@
 import crypto from 'node:crypto';
 import { NextResponse } from 'next/server';
-import { db } from '@/lib/db';
+import { db, friendlyDbError } from '@/lib/db';
 import { makeSessionCookie } from '@/lib/session';
 
 function passcodeMatches(input) {
@@ -14,6 +14,15 @@ function passcodeMatches(input) {
 
 // POST /api/login  { name, passcode, itsMe }
 export async function POST(request) {
+  try {
+    return await login(request);
+  } catch (error) {
+    // Setup problems (missing or wrong settings) end up here with a readable message.
+    return NextResponse.json({ error: friendlyDbError(error) }, { status: 500 });
+  }
+}
+
+async function login(request) {
   const { name: rawName, passcode, itsMe } = await request.json().catch(() => ({}));
 
   if (!passcodeMatches(passcode)) {
@@ -31,7 +40,7 @@ export async function POST(request) {
     .select('id, name')
     .eq('name_key', nameKey)
     .maybeSingle();
-  if (findError) return NextResponse.json({ error: findError.message }, { status: 500 });
+  if (findError) return NextResponse.json({ error: friendlyDbError(findError) }, { status: 500 });
 
   let user = existing;
   if (existing && !itsMe) {
@@ -43,7 +52,7 @@ export async function POST(request) {
     if (error) {
       // Someone grabbed the same name a split second earlier.
       if (error.code === '23505') return NextResponse.json({ taken: true, name }, { status: 409 });
-      return NextResponse.json({ error: error.message }, { status: 500 });
+      return NextResponse.json({ error: friendlyDbError(error) }, { status: 500 });
     }
     user = data;
   }

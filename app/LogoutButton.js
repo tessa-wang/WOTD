@@ -6,7 +6,7 @@ export default function LogoutButton() {
   const router = useRouter();
   return (
     <button
-      className="btn ghost"
+      className="link"
       onClick={async () => {
         await fetch('/api/logout', { method: 'POST' });
         router.replace('/login');
