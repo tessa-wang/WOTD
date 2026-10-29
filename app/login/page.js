@@ -10,7 +10,7 @@ export default async function LoginPage() {
   return (
     <main className="narrow">
       <h1 className="title">Word of the Day</h1>
-      <p className="muted center">One word. Every day. Together.</p>
+      <p className="muted center">Describe your day in one word!</p>
       <LoginForm needsPasscode={passcodeRequired()} />
     </main>
   );
