@@ -59,7 +59,7 @@ export default function LoginForm({ needsPasscode }) {
       }}
     >
       <label className="field">
-        <span>Your name</span>
+        <span>Nickname</span>
         <input
           value={name}
           onChange={(e) => setName(e.target.value)}
