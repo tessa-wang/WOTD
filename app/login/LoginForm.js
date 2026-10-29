@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-export default function LoginForm() {
+export default function LoginForm({ needsPasscode }) {
   const router = useRouter();
   const [name, setName] = useState('');
   const [passcode, setPasscode] = useState('');
@@ -68,16 +68,18 @@ export default function LoginForm() {
           required
         />
       </label>
-      <label className="field">
-        <span>Group passcode</span>
-        <input
-          type="password"
-          value={passcode}
-          onChange={(e) => setPasscode(e.target.value)}
-          autoComplete="current-password"
-          required
-        />
-      </label>
+      {needsPasscode && (
+        <label className="field">
+          <span>Group passcode</span>
+          <input
+            type="password"
+            value={passcode}
+            onChange={(e) => setPasscode(e.target.value)}
+            autoComplete="current-password"
+            required
+          />
+        </label>
+      )}
       {error && <p className="error">{error}</p>}
       <button className="btn" disabled={busy}>
         {busy ? 'One sec…' : 'Join'}

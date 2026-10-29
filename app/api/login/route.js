@@ -1,16 +1,7 @@
-import crypto from 'node:crypto';
 import { NextResponse } from 'next/server';
 import { db, friendlyDbError } from '@/lib/db';
 import { makeSessionCookie } from '@/lib/session';
-
-function passcodeMatches(input) {
-  const expected = process.env.GROUP_PASSCODE;
-  if (!expected) throw new Error('Missing GROUP_PASSCODE. Check your .env.local file.');
-  // Compare hashes so the check takes the same time whatever was typed.
-  const a = crypto.createHash('sha256').update(String(input ?? '')).digest();
-  const b = crypto.createHash('sha256').update(expected).digest();
-  return crypto.timingSafeEqual(a, b);
-}
+import { passcodeMatches } from '@/lib/passcode';
 
 // POST /api/login  { name, passcode, itsMe }
 export async function POST(request) {

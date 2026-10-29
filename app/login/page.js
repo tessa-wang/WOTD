@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation';
 import { getCurrentUser } from '@/lib/session';
+import { passcodeRequired } from '@/lib/passcode';
 import LoginForm from './LoginForm';
 
 export const metadata = { title: 'Log in · Word of the Day' };
@@ -10,7 +11,7 @@ export default async function LoginPage() {
     <main className="narrow">
       <h1 className="title">Word of the Day</h1>
       <p className="muted center">One word. Every day. Together.</p>
-      <LoginForm />
+      <LoginForm needsPasscode={passcodeRequired()} />
     </main>
   );
 }
