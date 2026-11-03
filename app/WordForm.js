@@ -64,7 +64,7 @@ export default function WordForm({ myWord }) {
           {busy ? '…' : 'Post'}
         </button>
       </div>
-      <p className="muted small">You get one try — no changes after you post.</p>
+      <p className="muted small">The weirder the word the better:) </p>
       {error && <p className="error">{error}</p>}
     </form>
   );
