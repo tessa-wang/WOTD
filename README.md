@@ -1,3 +1,5 @@
 # Word of the Day
 
-A small website for my friends. Everyday, people can post **one word** that describes their day, and everyone can see everyone else's words.
+* A website/app for my friends because I like asking people what word they would use to describe their day
+* Everyday, you can post **one word** that describes your day, and everyone can see each other's words.
+
