@@ -23,6 +23,15 @@ body {
   font-size: 16px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent; /* no grey flash when tapping, like a native app */
+}
+
+/* Keep content clear of the iPhone notch / Dynamic Island and the home indicator.
+   These are 0 on phones and screens without them. */
+body {
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
+    env(safe-area-inset-left);
 }
 
 .narrow {
@@ -351,4 +360,65 @@ a {
   gap: 12px;
   width: 100%;
   text-decoration: none;
+}
+
+/* "Add to Home Screen" tip (iPhone Safari only) */
+.install-tip {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: calc(12px + env(safe-area-inset-bottom));
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 16px 44px 16px 18px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  font-size: 14px;
+  z-index: 10;
+  animation: slide-up 0.35s ease-out both;
+}
+
+.install-title {
+  margin: 0 0 8px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.install-steps {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.install-steps li + li {
+  margin-top: 4px;
+}
+
+.share-icon {
+  width: 17px;
+  height: 17px;
+  vertical-align: -3px;
+  color: #007aff; /* Safari's blue, so it matches the button they're looking for */
+}
+
+.install-close {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 36px;
+  height: 36px;
+  font: inherit;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--muted);
+  background: none;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
 }

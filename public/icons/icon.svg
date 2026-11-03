@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="0.5" y="0.5" width="99" height="99" rx="22" fill="#ffffff" stroke="#e3e3e1"/><g transform="translate(50 51) scale(1.12) translate(-50 -51)" stroke="#1a1a1b" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round">
+    <!-- left side (shaded) -->
+    <path d="M23.5 27.5 Q29.5 31 36 34.6 Q36.2 54.5 37.4 74.4 Q31.2 70.6 26.4 66.6 Q24 47 23.5 27.5 Z" fill="#1a1a1b"/>
+    <!-- top -->
+    <path d="M23.5 27.5 Q42.5 25.2 61.6 23.8 Q67.4 27.6 72.8 32.4 Q54.4 33.2 36 34.6 Q29.5 31 23.5 27.5 Z" fill="#ffffff"/>
+    <!-- front -->
+    <path d="M36 34.6 Q54.4 33.2 72.8 32.4 Q74 52.4 74.6 72.4 Q56 73.8 37.4 74.4 Q36.2 54.5 36 34.6 Z" fill="#ffffff"/>
+    <!-- question mark -->
+    <path d="M48.6 47.6 Q48.6 41.6 55.2 41.2 Q61.6 41 61.6 46.8 Q61.6 50.6 57.8 52.6 Q55.4 53.9 55.4 57.6"
+      fill="none" stroke-width="4.6"/>
+    <circle cx="55.4" cy="64.6" r="2.7" fill="#1a1a1b" stroke="none"/>
+  </g></svg>
